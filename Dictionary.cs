@@ -20,7 +20,7 @@
         private List<DictionaryNode> values;
         public void AddNode(string? ruWord, string? engWord)
         {
-            values.Add(new DictionaryNode(ruWord, engWord));
+            values.Add(new DictionaryNode(engWord, ruWord));
         }
         public void DelNode(int index)
         {

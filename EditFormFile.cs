@@ -11,8 +11,10 @@ namespace EnglishHelper
         }
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            dictionary.AddNode("тест", "test");
+            dictionary.AddNode(RuEdit.Text, EngEdit.Text);
             RedrawDict();
+            RuEdit.Clear();
+            EngEdit.Clear();
         }
         private void RedrawDict()
         {
@@ -31,5 +33,6 @@ namespace EnglishHelper
         {
             RedrawDict();
         }
+
     }
 }

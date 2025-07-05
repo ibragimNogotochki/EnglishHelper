@@ -32,6 +32,8 @@
             RuHead = new ColumnHeader();
             EngHead = new ColumnHeader();
             AddBtn = new Button();
+            RuEdit = new TextBox();
+            EngEdit = new TextBox();
             SuspendLayout();
             // 
             // Editlv
@@ -64,11 +66,27 @@
             AddBtn.UseVisualStyleBackColor = true;
             AddBtn.Click += AddBtn_Click;
             // 
+            // RuEdit
+            // 
+            RuEdit.Location = new Point(12, 448);
+            RuEdit.Name = "RuEdit";
+            RuEdit.Size = new Size(100, 23);
+            RuEdit.TabIndex = 2;
+            // 
+            // EngEdit
+            // 
+            EngEdit.Location = new Point(225, 448);
+            EngEdit.Name = "EngEdit";
+            EngEdit.Size = new Size(100, 23);
+            EngEdit.TabIndex = 3;
+            // 
             // EditForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(337, 530);
+            Controls.Add(EngEdit);
+            Controls.Add(RuEdit);
             Controls.Add(AddBtn);
             Controls.Add(Editlv);
             Name = "EditForm";
@@ -76,6 +94,7 @@
             Text = "Form2";
             Shown += EditForm_Shown;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -84,5 +103,7 @@
         private ColumnHeader RuHead;
         private ColumnHeader EngHead;
         private Button AddBtn;
+        private TextBox RuEdit;
+        private TextBox EngEdit;
     }
 }
