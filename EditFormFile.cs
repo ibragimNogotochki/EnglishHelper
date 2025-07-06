@@ -3,18 +3,20 @@ namespace EnglishHelper
 {
     public partial class EditForm : Form
     {
-        Dictionary dictionary;
+        private Dictionary dictionary;
+        private NodeDialog dialog;
+        private bool isDeleting;
         public EditForm(Dictionary dictionary)
         {
             InitializeComponent();
             this.dictionary = dictionary;
+            dialog = new NodeDialog();
+            isDeleting = false;
         }
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            dictionary.AddNode(RuEdit.Text, EngEdit.Text);
+            dialog.ShowAndAdd(dictionary);
             RedrawDict();
-            RuEdit.Clear();
-            EngEdit.Clear();
         }
         private void RedrawDict()
         {
@@ -28,11 +30,30 @@ namespace EnglishHelper
             }
             this.Editlv.EndUpdate();
         }
-
         private void EditForm_Shown(object sender, EventArgs e)
         {
             RedrawDict();
         }
 
+        private void DelBtn_Click(object sender, EventArgs e)
+        {
+            this.Editlv.CheckBoxes = !isDeleting;
+            if (isDeleting)
+            {
+                int offset = 0;
+                foreach(ListViewItem item in Editlv.Items)
+                {
+                    if (item.Checked)
+                    {
+                        dictionary.DelNode(item.Index- offset);
+                        offset++;
+                    }
+                }
+                RedrawDict();
+                (sender as Control).Text = "Удаление";
+            }
+            else (sender as Control).Text = "OK";
+            isDeleting = !isDeleting;
+        }
     }
 }
