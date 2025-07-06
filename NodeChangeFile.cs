@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace EnglishHelper
+﻿namespace EnglishHelper
 {
     public partial class NodeDialog : Form
     {
@@ -26,6 +16,15 @@ namespace EnglishHelper
             if (this.DialogResult == DialogResult.OK)
                 dict.AddNode(RuEdit.Text, EngEdit.Text);
         }
+        public void ShowAndEdit(Dictionary dict, int index)
+        {
+            this.RuEdit.Text = dict.GetRuAt(index);
+            this.EngEdit.Text = dict.GetEngAt(index);
+            this.Text = "Изменение записи словаря";
 
+            this.ShowDialog();
+            if (this.DialogResult == DialogResult.OK)
+                dict.ChangeNode(index, EngEdit.Text, RuEdit.Text);
+        }
     }
 }

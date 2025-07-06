@@ -1,5 +1,4 @@
-﻿
-namespace EnglishHelper
+﻿namespace EnglishHelper
 {
     public partial class EditForm : Form
     {
@@ -34,14 +33,13 @@ namespace EnglishHelper
         {
             RedrawDict();
         }
-
         private void DelBtn_Click(object sender, EventArgs e)
         {
-            this.Editlv.CheckBoxes = !isDeleting;
+
             if (isDeleting)
             {
                 int offset = 0;
-                foreach(ListViewItem item in Editlv.Items)
+                foreach (ListViewItem item in Editlv.Items)
                 {
                     if (item.Checked)
                     {
@@ -50,10 +48,20 @@ namespace EnglishHelper
                     }
                 }
                 RedrawDict();
-                (sender as Control).Text = "Удаление";
             }
-            else (sender as Control).Text = "OK";
+            ChangeState((sender as Control)!);
+        }
+        private void ChangeState(Control sender)
+        {
+            this.Editlv.CheckBoxes = !isDeleting;
+            if (isDeleting) sender.Text = "Удаление";
+            else sender.Text = "ОК";
             isDeleting = !isDeleting;
+        }
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            dialog.ShowAndEdit(dictionary, Editlv.SelectedItems[0].Index);
+            RedrawDict();
         }
     }
 }

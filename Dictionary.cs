@@ -42,6 +42,11 @@
                 return this.values[index].EnglishWord;
             else return null;
         }
+        public void ChangeNode(int index, string? newEng, string? newRu)
+        {
+            values[index].RussianWord = newRu;
+            values[index].EnglishWord = newEng;
+        }
         public Dictionary()
         {
             values = [];

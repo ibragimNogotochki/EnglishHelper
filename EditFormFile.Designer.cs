@@ -33,6 +33,7 @@
             EngHead = new ColumnHeader();
             AddBtn = new Button();
             DelBtn = new Button();
+            EditButton = new Button();
             SuspendLayout();
             // 
             // Editlv
@@ -77,11 +78,22 @@
             DelBtn.UseVisualStyleBackColor = true;
             DelBtn.Click += DelBtn_Click;
             // 
+            // EditButton
+            // 
+            EditButton.Location = new Point(198, 570);
+            EditButton.Name = "EditButton";
+            EditButton.Size = new Size(94, 29);
+            EditButton.TabIndex = 7;
+            EditButton.Text = "Изменить";
+            EditButton.UseVisualStyleBackColor = true;
+            EditButton.Click += EditButton_Click;
+            // 
             // EditForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(385, 604);
+            Controls.Add(EditButton);
             Controls.Add(DelBtn);
             Controls.Add(AddBtn);
             Controls.Add(Editlv);
@@ -100,5 +112,6 @@
         private ColumnHeader EngHead;
         private Button AddBtn;
         private Button DelBtn;
+        private Button EditButton;
     }
 }
