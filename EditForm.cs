@@ -63,5 +63,11 @@
             dialog.ShowAndEdit(dictionary, Editlv.SelectedItems[0].Index);
             RedrawDict();
         }
+
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dictionary = FileWork.ReadDictionary("DemoDict.txt");
+            RedrawDict();
+        }
     }
 }
